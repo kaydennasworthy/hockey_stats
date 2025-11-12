@@ -1,0 +1,30 @@
+---
+title: "2025_team_comparison"
+output: html_document
+date: "2025-11-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+sys.date = Sys.Date()
+```
+
+## 2025 NHL Season stats pulled 'sys.date'
+
+```{r}
+library(tidyverse) #install.packages("tidyverse")
+data = read_csv("C:\\Users\\kayde\\Desktop\\NHL stats\\Data\\all_teams.csv")
+
+summary(data)
+
+data %>%
+  group_by(team, season) %>%
+  summarise(total_goalsFor = sum(goalsFor),
+            total_goalsAgainst = sum(goalsAgainst),
+            total_goalDiff = total_goalsFor - total_goalsAgainst)
+```
+
+## Including Plots
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
